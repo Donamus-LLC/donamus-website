@@ -19,7 +19,7 @@ export default function LogoHeader() {
     }
 
     return (
-        <div className="bg-donamus-primary-300 p-4 flex justify-start">
+        <div className="bg-donamus-secondary-500 p-4 flex justify-start">
             <span className="flex flex-row gap-4 justify-center items-center">
                 <img src="/NavBarLogo.png" className="max-w-48" />
                 <div className="text-base hover:text-lg transition-all duration-300" onClick={handleGoodSoftwareTextClick}>{goodSoftwareText}</div>
