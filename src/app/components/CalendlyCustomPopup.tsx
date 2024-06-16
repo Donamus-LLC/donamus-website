@@ -18,7 +18,7 @@ export default function CalendlyCustomPopup() {
                 <PopupWidget 
                     url="https://calendly.com/donamus/30min" 
                     rootElement={document.body} 
-                    text="Contact Us"
+                    text="Collaborate on good software"
                     textColor="#ffffff"
                     color="#CD7659"
                 />: <div></div>
