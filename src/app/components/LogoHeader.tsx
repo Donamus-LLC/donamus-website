@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function LogoHeader() {
     let [goodSoftwareText, setGoodSoftwareText] = useState('Click here to see what good software can do.');
@@ -18,10 +19,12 @@ export default function LogoHeader() {
         setGoodSoftwareText(`Good software ${randomOption}.`);
     }
 
+    let router = useRouter();
+
     return (
         <div className="bg-donamus-secondary-500 p-4 flex justify-start">
             <span className="flex flex-row gap-4 justify-center items-center">
-                <img src="/NavBarLogo.png" className="max-w-48" />
+                <img src="/NavBarLogo.png" className="max-w-48" onClick={() => router.push('/')} />
                 <div className="text-base hover:text-lg transition-all duration-300" onClick={handleGoodSoftwareTextClick}>{goodSoftwareText}</div>
             </span>
         </div>

@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Header />
-        <div className="flex h-screen">
+        <div className="flex h-screen bg-white text-black">
           <NavBar />
           <main className="w-3/4 overflow-auto p-4">
             {children}
