@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Donamus: Software Meets Humanity",
-  description: "A tech shop with personable, passionate, and performant people that create good software which empowers people.",
+  description: "A tech shop with personable, passionate, and performant people that create good software which empowers communities.",
 };
 
 export default function RootLayout({

@@ -1,6 +1,4 @@
 import Link from "next/link";
-import CompatibilityCheckBox from "./components/CompatibilityCheckBox";
-import { ReactNode } from "react";
 
 export default function Home() {
 
