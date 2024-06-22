@@ -23,7 +23,7 @@ export default function LogoHeader() {
 
     return (
         <div className="bg-donamus-secondary-500 p-4 flex justify-start">
-            <span className="flex flex-row gap-4 justify-center items-center">
+            <span className="flex md:flex-row flex-col gap-4 justify-center items-center">
                 <img src="/NavBarLogo.png" className="max-w-48" onClick={() => router.push('/')} />
                 <div className="text-base hover:text-lg transition-all duration-300" onClick={handleGoodSoftwareTextClick}>{goodSoftwareText}</div>
             </span>

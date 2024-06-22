@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <div>
       <div className="flex flex-col p-4">
-        <div className="flex justify-items-center items-center flex-col text-6xl font-semibold text-center pb-8 uppercase">
+        <div className="flex justify-items-center items-center flex-col md:text-6xl text-3xl font-semibold text-center pb-8 uppercase">
           <div>Good software empowers people.</div><div>We make good software.</div>
         </div>
         <p className="text-xl pb-3">We are a tech shop that believes in creating digital products that help shape lives. A particular team culture is required to develop good software, and we embody the culture entirely. Every team member is cross-functional in many areas of software development, paying particular attention to details and using empathy to build products that empower people positively.</p>
@@ -39,12 +39,12 @@ export default function Home() {
         <div className="pb-8"></div>
       </div>
       <div className="flex flex-col justify-center items-center">
-        <div className="text-2xl font-semibold text-opacity-50 uppercase pb-5">Good software collaborators</div>
-        <div className="flex flex-row justify-evenly items-center pb-8">
+        <div className="text-2xl font-semibold text-opacity-50 uppercase pb-5">Good software collaborators (so far)</div>
+        <div className="flex md:flex-row flex-col justify-evenly items-center pb-8">
           {returnClientCards('PAID', clientList)} 
         </div>
-        <div className="text-2xl font-semibold text-opacity-50 uppercase pb-5">Pro bono good software collaborators</div>
-        <div className="flex flex-row justify-evenly items-center pb-8">
+        <div className="text-2xl font-semibold text-opacity-50 uppercase pb-5">Pro bono good software collaborators (so far)</div>
+        <div className="flex md:flex-row flex-col justify-evenly items-center pb-8">
           {returnClientCards('PROBONO', clientList)} 
         </div>
       </div>

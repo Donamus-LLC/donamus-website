@@ -3,8 +3,8 @@ import Link from "next/link"
 export default function NavBar () {
     return (
         <nav className="w-1/4 bg-donamus-primary-500 text-white p-4">
-            <p className="text-4xl">Explore</p>
-            <ul className="list-none divide-y p-4 text-xl">
+            <p className="text-xl md:text-4xl">Explore</p>
+            <ul className="list-none divide-y p-4 pb-4 md:text-xl text-xs">
                 <li><Link href="/">Home</Link></li>
                 <li><Link href="/about-us">About Us</Link></li>
                 <li><Link href="/donamus-labs">Donamus Labs</Link></li>
