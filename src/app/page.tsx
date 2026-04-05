@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
 
@@ -18,7 +19,7 @@ export default function Home() {
     let clientListCards =  clientList.filter((client:Client) => client.type === type).map((client:Client) => {
       return (
         <div className="flex flex-col items-center justify-center border shadow-lg rounded-lg p-4 hover:shadow-xl hover:scale-110 transition-transform duration-300" key={client.name}>
-          {client.logoPath === ''? <div></div>: <img src={client.logoPath} className="h-32 w-48 pb-4" />}
+          {client.logoPath === ''? <div></div>: <Image src={client.logoPath} className="h-32 w-48 pb-4" alt={`${client.name} logo`} width={192} height={128} />}
           {client.websiteURL === ''? <div className="text-base">{client.name}</div>: <Link href={client.websiteURL} className="hover:text-donamus-primary-400">{client.name}</Link>}
         </div>
       );

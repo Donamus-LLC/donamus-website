@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function LogoHeader() {
     let [goodSoftwareText, setGoodSoftwareText] = useState('Click here to see what good software can do.');
@@ -24,7 +25,7 @@ export default function LogoHeader() {
     return (
         <div className="bg-donamus-secondary-500 p-4 flex justify-start">
             <span className="flex md:flex-row flex-col gap-4 justify-center items-center">
-                <img src="/NavBarLogo.png" className="max-w-48" onClick={() => router.push('/')} />
+                <Image src="/NavBarLogo.png" className="max-w-48" onClick={() => router.push('/')} alt="Donamus logo" width={192} height={48} />
                 <div className="text-base hover:text-lg transition-all duration-300" onClick={handleGoodSoftwareTextClick}>{goodSoftwareText}</div>
             </span>
         </div>
