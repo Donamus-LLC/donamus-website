@@ -29,7 +29,8 @@ terraform plan -out=production.tfplan
 terraform apply production.tfplan
 ```
 
-Review each plan before applying. Applying infrastructure is manual; pushing
+Review each plan before applying. CI checks formatting, validates Terraform without state access, and runs the route
+tests. Applying infrastructure is manual; pushing
 `develop` does not apply Terraform or deploy production site content.
 `production.auto.tfvars` enables the live DNS records after the initial cutover.
 Do not disable `publish_dns` after cutover: Terraform would remove those records.
@@ -46,7 +47,9 @@ Bootstrap settings: region `us-west-1`, all four public-access blocks enabled,
 versioning Enabled, default encryption AES256. Preserve this bucket and its object
 versions. Terraform administrators need access to the state object and `.tflock`
 object. Never store state or credentials in Git; `.terraform/`, state, and plans
-are ignored. Commit `.terraform.lock.hcl` to retain verified provider versions.
+are ignored. Commit `.terraform.lock.hcl` to retain verified provider versions. When changing
+providers, record checksums for the CI runner and development machine with
+`terraform providers lock -platform=linux_amd64 -platform=darwin_amd64`.
 
 ## Routing and caching
 
