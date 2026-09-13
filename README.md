@@ -75,3 +75,11 @@ Deployment reports missing configuration explicitly and fails until it is suppli
 After configuration, rerun the failed deployment job or manually run the workflow
 on `main`. The existing deployment sync deletes destination objects absent from
 `out/`, so the bucket must be dedicated to this website.
+
+## AWS infrastructure
+
+[Production Terraform configuration](infrastructure/production/README.md) manages
+HTTPS delivery through CloudFront, private access to the website bucket, and the
+production Route 53 records. Infrastructure changes are reviewed and applied
+separately from GitHub Actions site uploads. Terraform state is stored in a
+private, encrypted, versioned S3 bucket with locking.

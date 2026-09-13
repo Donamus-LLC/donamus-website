@@ -34,3 +34,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Terraform working files and plans (state lives in the dedicated S3 backend)
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
