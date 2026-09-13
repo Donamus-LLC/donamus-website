@@ -1,34 +1,33 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { companyTagline } from "./data/site";
+import { Cabin, Montserrat } from "next/font/google";
 import "./globals.css";
-import Header from "./components/Header";
-import NavBar from "./components/NavBar";
-import CalendlyCustomPopup from "./components/CalendlyCustomPopup";
+import SiteHeader from "./components/SiteHeader";
+import SiteFooter from "./components/SiteFooter";
 
-const inter = Inter({ subsets: ["latin"] });
-
+const cabin = Cabin({ subsets: ["latin"], display: "swap", variable: "--font-body" });
+const montserrat = Montserrat({ subsets: ["latin"], display: "swap", variable: "--font-heading" });
 export const metadata: Metadata = {
-  title: "Donamus: Software Meets Humanity",
-  description: "A tech shop with personable, passionate, and performant people that create good software which empowers communities.",
+  title: {
+    default: "Donamus — Consultations & Apps",
+    template: "%s | Donamus",
+  },
+  description:
+    `${companyTagline}. Explore consultations and apps from Donamus.`,
 };
-
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} root-main-html-tag`}>
-        <Header />
-        <div className="flex h-screen bg-white text-black">
-          <NavBar />
-          <main className="w-3/4 overflow-auto p-4 root-main-html-tag">
-            {children}
-          </main>
-          <CalendlyCustomPopup />
-        </div>
-        </body>
+      <body className={`${cabin.variable} ${montserrat.variable}`}>
+        <a className="skip-link" href="#main-content">
+          Skip to content
+        </a>
+        <SiteHeader />
+        <main id="main-content">{children}</main>
+        <SiteFooter />
+      </body>
     </html>
   );
 }

@@ -1,19 +1,56 @@
-'use client';
-
-import PageHeader from "../components/PageHeader";
-import { InlineWidget } from "react-calendly";
-
-export default function Page() {
-    return (
-        <section>
-            <PageHeader pageTitle="Contact Us" />
-            <p className="text-base">
-            Humanity is at the center of everything we do. We create good software that empathizes with its users. Software is supposed to solve problems humans face – it shouldn’t become one of them. Leading with our human-centered design philosophy, we work with organizations to create products that bring a breath of fresh air, excitement, and, most importantly, happiness through ease of use and intuitiveness.
-            If you are a business that needs help with solving palpable pain points for people either internal or external to the organization, then reach out. We guarantee to elicit a response of, “Wow! This software product is in tune with my needs and guides me in solving them easily.” <span className="font-semibold">Or we will give you a full refund.</span> Come take a leap of faith. Let us show you what good software can do to positively impact humanity.
-            </p>
-            <div className="min-w-1/2">
-                <InlineWidget url="https://calendly.com/donamus/30min" />
-            </div>
-        </section>
-    )
+import type { Metadata } from "next";
+import { bookingUrl } from "../data/site";
+export const metadata: Metadata = {
+  title: "Let’s talk",
+  description:
+    "Book a 30-minute introduction with Donamus to discuss your idea, technology question, or app.",
+};
+export default function Contact() {
+  return (
+    <section className="shell contact-page">
+      <div>
+        <p className="eyebrow">Let’s talk</p>
+        <h1>
+          Big idea?
+          <br />
+          Small question?
+          <br />
+          <em>Start here.</em>
+        </h1>
+        <p className="intro-description">
+          Tell us what you’re thinking about. We’ll listen, ask a few questions,
+          and explore whether we can help.
+        </p>
+      </div>
+      <div className="booking-card">
+        <span className="booking-symbol" aria-hidden="true">
+          ↗
+        </span>
+        <p className="eyebrow">A first conversation</p>
+        <h2>
+          Let’s get
+          <br />
+          to know your idea.
+        </h2>
+        <p>
+          Book a 30-minute introduction. Choose a time that works for you on our
+          Calendly booking page.
+        </p>
+        <ul>
+          <li>Your idea, question, or current challenge</li>
+          <li>What you’d like to change or achieve</li>
+          <li>Whether working together makes sense</li>
+        </ul>
+        <a
+          href={bookingUrl}
+          className="button"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Choose a time <span aria-hidden="true">↗</span>
+        </a>
+        <span className="booking-note">Opens Calendly in a new tab.</span>
+      </div>
+    </section>
+  );
 }
