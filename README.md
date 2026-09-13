@@ -59,7 +59,9 @@ unmodified and preserve its proportions and clear space.
 ## GitHub Actions deployment
 
 Pull requests and pushes to `main` and `develop` run dependency installation,
-lint, typecheck, and the production build. The static export is saved as a workflow
+lint, typecheck, CloudFront route tests, and the production build. A separate
+job checks Terraform formatting and validates its configuration without AWS
+credentials or access to production state. Both jobs must pass before deployment. The static export is saved as a workflow
 artifact. Only `main` deploys that artifact to S3 after validation succeeds;
 `develop` and PR builds never deploy to the production bucket.
 
