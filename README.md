@@ -55,3 +55,22 @@ The supplied Donamus logo artwork is in `public/brand/`. Brand colors and typogr
 follow the Donamus Style Guidelines: coral primary, navy secondary, pale blue
 accents, Montserrat headings, and Cabin body text. Keep supplied logo artwork
 unmodified and preserve its proportions and clear space.
+
+## GitHub Actions deployment
+
+Pull requests and pushes to `main` and `develop` run dependency installation,
+lint, typecheck, and the production build. The static export is saved as a workflow
+artifact. Only `main` deploys that artifact to S3 after validation succeeds;
+`develop` and PR builds never deploy to the production bucket.
+
+Configure these in the repository's Settings → Secrets and variables → Actions:
+
+- Variables: `AWS_REGION` and `S3_BUCKET_NAME` (existing secrets with these names
+  are also supported).
+- Secrets: `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` for an AWS identity with
+  access to list the destination bucket and read, write, and delete its objects.
+
+Deployment reports missing configuration explicitly and fails until it is supplied.
+After configuration, rerun the failed deployment job or manually run the workflow
+on `main`. The existing deployment sync deletes destination objects absent from
+`out/`, so the bucket must be dedicated to this website.
