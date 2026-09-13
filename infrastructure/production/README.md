@@ -1,6 +1,6 @@
 # Production website infrastructure
 
-Account `157409413604`; branch `develop` contains the infrastructure source.
+Account `157409413604`; infrastructure source is maintained in this repository.
 
 Traffic flows from Route 53 (`donamus.co`, `www.donamus.co`) through CloudFront
 with an ACM certificate to the existing website bucket in `us-west-1`.
@@ -10,8 +10,8 @@ access is blocked; its previously enabled website endpoint is not used.
 This configuration manages the production distribution, certificate and its DNS
 validation, bucket read policy/public-access block, and production web records.
 The bucket itself is an existing data source: Terraform does not manage or delete
-website objects. Email records, the old server, `new.donamus.co`, its distribution,
-and its buckets remain outside this configuration.
+website objects. Email records and the old server remain outside this
+configuration. The previous staging resources have been retired (see below).
 
 ## Work with Terraform
 
@@ -87,3 +87,27 @@ web records with `publish_dns=true` and apply the DNS-only cutover plan.
 Pre-cutover checks covered all five pages, trailing-slash routes, Next.js prefetch
 payloads, assets, 404s, HTTP-to-HTTPS redirects, TLS for both domain names, and
 browser client navigation. Direct unsigned S3 reads return 403 as intended.
+
+## Staging retirement — September 13, 2026
+
+The unused `new.donamus.co` and `www.new.donamus.co` sites were removed with AWS CLI
+after checking for shared dependencies:
+
+- Deleted CloudFront distribution `E1YV7TCT4Y78AU` after disabling it and waiting
+  for deployment to complete.
+- Deleted its dedicated origin access control `E1U7W4NVWZWKX7` and the ACM
+  certificate ending in `0a524f19-fbbf-4ace-a494-2b747ee22da9` in `us-east-1`.
+- Deleted both S3 buckets, including all 38 versions in `new.donamus.co` and the
+  empty `www.new.donamus.co` redirect bucket.
+- Deleted the two staging web aliases and their two certificate-validation CNAMEs.
+
+The distribution had no Lambda/CloudFront function associations, WAF attachment,
+or custom cache policy. The buckets had no replication, notifications, access
+points, or logging destinations. The certificate and origin access control were
+not shared. These resources were never part of the production Terraform state;
+no state removal or Terraform destroy was needed.
+
+Production DNS, its certificate/distribution, the website bucket, the Terraform
+state bucket, email records, and the previous production server were preserved.
+The production bucket's website-hosting setting is managed separately by the
+owner; this retirement did not change it.
