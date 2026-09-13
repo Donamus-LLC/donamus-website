@@ -67,7 +67,8 @@ Configure these in the repository's Settings → Secrets and variables → Actio
 
 - Variables: `AWS_REGION` and `S3_BUCKET_NAME` (existing secrets with these names
   are also supported).
-- Secrets: `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` for an AWS identity with
+- Environment secrets under Settings → Environments → `production`:
+  `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` for an AWS identity with
   access to list the destination bucket and read, write, and delete its objects.
 
 Deployment reports missing configuration explicitly and fails until it is supplied.
