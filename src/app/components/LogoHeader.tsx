@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 export default function LogoHeader() {
-    let [goodSoftwareText, setGoodSoftwareText] = useState('Click here to see what good software can do.');
-    let goodSoftwareOptions = [
+    const [goodSoftwareText, setGoodSoftwareText] = useState('Click here to see what good software can do.');
+    const goodSoftwareOptions = [
         'allows healthcare workers to provide empathetic care',
         'allows teachers to educate each student uniquely',
         'enables financial inclusion',
@@ -15,12 +15,12 @@ export default function LogoHeader() {
         'allows teachers to focus on ensuring students learn rather than spending time on creating content',
     ];
 
-    let handleGoodSoftwareTextClick = () => {
-        let randomOption = goodSoftwareOptions[Math.floor(Math.random()*goodSoftwareOptions.length)];
+    const handleGoodSoftwareTextClick = () => {
+        const randomOption = goodSoftwareOptions[Math.floor(Math.random()*goodSoftwareOptions.length)];
         setGoodSoftwareText(`Good software ${randomOption}.`);
     }
 
-    let router = useRouter();
+    const router = useRouter();
 
     return (
         <div className="bg-donamus-secondary-500 p-4 flex justify-start">

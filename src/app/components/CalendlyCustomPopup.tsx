@@ -5,7 +5,7 @@ import { PopupWidget } from "react-calendly";
 
 export default function CalendlyCustomPopup() {
     
-    let [documentReady, setDocumentReady] = useState(false);
+    const [documentReady, setDocumentReady] = useState(false);
     useEffect(()  => {
         if(typeof document !== 'undefined') {
             // eslint-disable-next-line react-hooks/set-state-in-effect

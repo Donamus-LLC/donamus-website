@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Home() {
 
-  let clientList: Client[] = [{
+  const clientList: Client[] = [{
     'logoPath': '',
     'name': 'University of Pennsylvania',
     'websiteURL': 'https://www.upenn.edu/',
@@ -15,8 +15,8 @@ export default function Home() {
     'type': 'PROBONO'
   }]
 
-  let returnClientCards = (type: string, clientList:Array<Client>) => {
-    let clientListCards =  clientList.filter((client:Client) => client.type === type).map((client:Client) => {
+  const returnClientCards = (type: string, clientList:Array<Client>) => {
+    const clientListCards =  clientList.filter((client:Client) => client.type === type).map((client:Client) => {
       return (
         <div className="flex flex-col items-center justify-center border shadow-lg rounded-lg p-4 hover:shadow-xl hover:scale-110 transition-transform duration-300" key={client.name}>
           {client.logoPath === ''? <div></div>: <Image src={client.logoPath} className="h-32 w-48 pb-4" alt={`${client.name} logo`} width={192} height={128} />}
