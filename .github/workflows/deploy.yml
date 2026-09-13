@@ -48,6 +48,7 @@ jobs:
           retention-days: 7
 
   deploy:
+    environment: production
     needs: validate
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     runs-on: ubuntu-latest
