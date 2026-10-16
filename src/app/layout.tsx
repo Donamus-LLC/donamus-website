@@ -20,7 +20,8 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${cabin.variable} ${montserrat.variable}`}>
+      {/* Grammarly can add body attributes before hydration; keep suppression scoped here. */}
+      <body className={`${cabin.variable} ${montserrat.variable}`} suppressHydrationWarning>
         <a className="skip-link" href="#main-content">
           Skip to content
         </a>
