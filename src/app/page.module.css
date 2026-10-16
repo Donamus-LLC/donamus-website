@@ -1,0 +1,195 @@
+.mission {
+  max-width: 900px;
+  margin-inline: auto;
+  text-wrap: pretty;
+}
+
+.section {
+  padding-block: 96px;
+  scroll-margin-top: var(--header-height);
+}
+
+.content {
+  padding-inline: 24px;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.purpose {
+  background: var(--blue);
+}
+
+.belief {
+  font-size: clamp(24px, 2.6vw, 36px);
+  line-height: 1.5;
+}
+
+.heading {
+  max-width: 800px;
+  margin-bottom: 40px;
+}
+
+.heading p {
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.timelineHint {
+  margin-bottom: 24px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.timelineLayout {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 44px;
+  align-items: center;
+  gap: 16px;
+}
+
+.timelineArrow {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  cursor: pointer;
+}
+
+.timelineArrow svg {
+  display: block;
+}
+
+.timelineArrow:hover {
+  background: #1c4c78;
+}
+
+.timelineArrow:disabled {
+  visibility: hidden;
+}
+
+.timeline {
+  overflow-x: auto;
+  padding-bottom: 24px;
+  scroll-snap-type: x proximity;
+  scrollbar-color: var(--ink) var(--blue);
+}
+
+.timeline:focus-visible {
+  outline: 3px solid #a14b2d;
+  outline-offset: 6px;
+}
+
+.principles {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min(320px, 88%);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.principles li {
+  position: relative;
+  padding-right: 32px;
+  scroll-snap-align: start;
+}
+
+.principles li:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: 19px;
+  left: 20px;
+  width: 100%;
+  height: 2px;
+  background: var(--blue);
+}
+
+.timelinePoint {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #a14b2d;
+  border-radius: 50%;
+  background: var(--coral);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.principles h3 {
+  margin-block: 24px 14px;
+  font-size: 22px;
+}
+
+.principles p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.values {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.valueCopy p {
+  color: var(--blue);
+  font-size: 18px;
+}
+
+.valueCopy h3 {
+  margin-top: 36px;
+  color: var(--coral);
+  font-size: clamp(32px, 4vw, 48px);
+}
+
+@media (max-width: 1100px) {
+  .split {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 760px) {
+  .section {
+    padding-block: 56px;
+  }
+
+  .content {
+    width: calc(100% - 72px);
+    padding-inline: 0;
+  }
+
+  .split {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .heading p,
+  .valueCopy p {
+    font-size: 16px;
+  }
+
+  .timelineLayout {
+    gap: 8px;
+  }
+
+  .principles {
+    grid-auto-columns: 100%;
+  }
+
+  .principles li {
+    padding-right: 16px;
+  }
+}
